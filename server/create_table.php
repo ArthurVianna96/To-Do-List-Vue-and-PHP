@@ -6,7 +6,8 @@
     $sql = 'CREATE TABLE IF NOT EXISTS tasks (
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             task_name VARCHAR(100) NOT NULL,
-            finish_date DATE
+            finish_date DATE,
+            finished BOOLEAN
         )';
 
     $result = $connection->query($sql);

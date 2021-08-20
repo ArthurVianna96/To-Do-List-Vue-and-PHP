@@ -3,21 +3,35 @@ const app = Vue.createApp ({
         return {
             errormessage: false,
             successmessage: false,
-            tasks: [],
+            markedTasks: [],
+            unMarkedTasks:[],
             currentTask: {}
         }
     },
     mounted() {
-        this.getAllTasks();
+        this.getAllUnmarkedTasks()
+        this.getAllMarkedTasks()
+        console.log(this.markedTasks);
+        console.log(this.unMarkedTasks);
     },
     methods: {
-        getAllTasks(){
-            axios.get("http://localhost/server/queries.php?action=read")
+        getAllUnmarkedTasks(){
+            axios.get("http://localhost/server/queries.php?action=getunmarked")
             .then((response)=>{
                 if(response.data.error){
                     this.errorMessageEdit = response.data.message
                 } else {
-                    this.tasks = response.data.tasks
+                    this.unMarkedTasks = response.data.tasks
+                }
+            })
+        },
+        getAllMarkedTasks(){
+            axios.get("http://localhost/server/queries.php?action=getmarked")
+            .then((response)=>{
+                if(response.data.error){
+                    this.errorMessageEdit = response.data.message
+                } else {
+                    this.markedTasks = response.data.tasks
                 }
             })
         },
@@ -31,7 +45,8 @@ const app = Vue.createApp ({
                     this.errormessage = response.data.message
                 } else{
                     this.successmessage = response.data.message
-                    this.getAllTasks()
+                    this.getAllUnmarkedTasks()
+                    this.getAllMarkedTasks()
                 }
             })
         },
@@ -45,7 +60,8 @@ const app = Vue.createApp ({
                     this.errormessage = response.data.message
                 } else{
                     this.successmessage = response.data.message
-                    this.getAllTasks()
+                    this.getAllUnmarkedTasks()
+                    this.getAllMarkedTasks()
                 }
             })
         },
@@ -60,7 +76,38 @@ const app = Vue.createApp ({
                     this.errormessage = response.data.message
                 } else{
                     this.successmessage = response.data.message
-                    this.getAllTasks()
+                    this.getAllUnmarkedTasks()
+                    this.getAllMarkedTasks()
+                }
+            })
+        },
+
+        markTask(value){
+            let myForm = new FormData();
+            myForm.append('id', value.id)
+            axios.post("http://localhost/server/queries.php?action=mark", myForm)
+            .then((response)=>{
+                if(response.data.error){
+                    this.errormessage = response.data.message
+                } else{
+                    this.successmessage = response.data.message
+                    this.getAllUnmarkedTasks()
+                    this.getAllMarkedTasks()
+                }
+            })
+        },
+
+        unMarkTask(value){
+            let myForm = new FormData();
+            myForm.append('id', value.id)
+            axios.post("http://localhost/server/queries.php?action=unmark", myForm)
+            .then((response)=>{
+                if(response.data.error){
+                    this.errormessage = response.data.message
+                } else{
+                    this.successmessage = response.data.message
+                    this.getAllUnmarkedTasks()
+                    this.getAllMarkedTasks()
                 }
             })
         },

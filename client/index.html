@@ -30,16 +30,25 @@
         <div class="content">
             <add-task :errormessage='errorMessageCreate' :successmessage='successMessageCreate' v-on:addtaskevent='addTask'></add-task>
             <div class='container'>
-                <div class='alert alert-danger' v-if='errormessage'>
-                    {{errormessage}}
-                </div>
-                <div class='alert alert-success' v-if='successmessage'>
-                    {{successmessage}}
+
+                <div class='alert alert-danger row message' style="padding: 0px;" v-if='errormessage'>
+                    <p>{{errormessage}}</p>
+                    <a href="#" @click='errormessage=false'>
+                        <i class="fas fa-times close-message" style='font-size: 0.8rem;'></i>
+                    </a>
+                </div> 
+
+                <div class='alert alert-success row message' style="padding: 0px;" v-if='successmessage'>
+                    <p>{{successmessage}}</p>
+                    <a href="#" @click='successmessage=false'>
+                        <i class="fas fa-times close-message" style='font-size: 0.8rem;'></i>
+                    </a>
                 </div> 
             </div>
             <edit-task :errormessage='errorMessageEdit' :successmessage='successMessageEdit' v-on:closemodal='onCloseEdit' :showeditmodal='showeditmodal' :task='currentTask' v-on:updatetaskevent='updateTask'></edit-task>
-            <tasks-list v-on:editclickevent='onEditClick' v-on:edittaskevent='selectTask' :showeditmodal='showeditmodal' :tasks='tasks' v-on:deleteclickevent='deleteTask'></tasks-list>
+            <tasks-list v-on:editclickevent='onEditClick' v-on:edittaskevent='selectTask' :showeditmodal='showeditmodal' :tasks='unMarkedTasks' v-on:deleteclickevent='deleteTask' v-on:marktask='markTask'></tasks-list>
             
+            <finished-tasks-container :finishedtasks='markedTasks' v-on:unmark='unMarkTask'></finished-tasks-container>
         </div>
 
         <!-- footer -->
@@ -56,6 +65,7 @@
     <script src="components/tasks_list.js"></script>
     <script src="components/add_task_modal.js"></script>
     <script src="components/edit_task_modal.js"></script>
+    <script src="components/finished_tasks_container.js"></script>
     
 
     

@@ -53,6 +53,26 @@ body{
     justify-content: space-around;
 }
 
+
+.message{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+}
+
+.message > p{
+    margin: 0;
+    padding: 10px;
+}
+
+.close-message{
+    color: #444;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
 #overlay{
     position: absolute;
     top:0;
@@ -62,4 +82,41 @@ body{
     z-index: 3;
     background: rgba(0,0,0,0.6);
 
+}
+
+.finished-task{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 400px;
+    background-color: #eee;
+    border-radius: 10px;
+    min-height: 80px;
+    padding: 0;
+}
+
+.finished-task > .float-left > h4{
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.float-right{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.fas, .far{
+    transition: all linear 100ms;
+}
+
+i:hover{
+    transform: scale(1.2);
+}
+
+i.fa-check{
+    color: green;
+}
+i.fa-check:hover{
+    transform: none;
+    color: green;
 }
