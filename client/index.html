@@ -28,9 +28,10 @@
 
         <!-- content -->
         <div class="content">
-            <add-task :errormessage='errorMessageCreate' :successmessage='successMessageCreate' v-on:addtaskevent='addTask'></add-task>
-            <div class='container'>
 
+            <add-task :errormessage='errormessage' :successmessage='successmessage' v-on:addtaskevent='addTask'></add-task>
+
+            <div class='container'>
                 <div class='alert alert-danger row message' style="padding: 0px;" v-if='errormessage'>
                     <p>{{errormessage}}</p>
                     <a href="#" @click='errormessage=false'>
@@ -45,7 +46,9 @@
                     </a>
                 </div> 
             </div>
-            <edit-task :errormessage='errorMessageEdit' :successmessage='successMessageEdit' v-on:closemodal='onCloseEdit' :showeditmodal='showeditmodal' :task='currentTask' v-on:updatetaskevent='updateTask'></edit-task>
+
+            <edit-task :errormessage='errormessage' :successmessage='successmessage' v-on:closemodal='onCloseEdit' :showeditmodal='showeditmodal' :task='currentTask' v-on:updatetaskevent='updateTask'></edit-task>
+            
             <tasks-list v-on:editclickevent='onEditClick' v-on:edittaskevent='selectTask' :showeditmodal='showeditmodal' :tasks='unMarkedTasks' v-on:deleteclickevent='deleteTask' v-on:marktask='markTask'></tasks-list>
             
             <finished-tasks-container :finishedtasks='markedTasks' v-on:unmark='unMarkTask'></finished-tasks-container>
