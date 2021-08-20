@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD Application</title>
+    <link rel="stylesheet" href="assets/main.css">
+
+    <!--Import Axios-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!--Import Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!--Import Oswald Font Family-->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!--Import Font Awesome-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!--Import Vue.js-->
+    <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <!-- header -->
+        <header-vue class="header"></header-vue>
+
+        <!-- content -->
+        <div class="content">
+            <add-task :errormessage='errorMessageCreate' :successmessage='successMessageCreate' v-on:addtaskevent='addTask'></add-task>
+            <div class='container'>
+                <div class='alert alert-danger' v-if='errormessage'>
+                    {{errormessage}}
+                </div>
+                <div class='alert alert-success' v-if='successmessage'>
+                    {{successmessage}}
+                </div> 
+            </div>
+            <edit-task :errormessage='errorMessageEdit' :successmessage='successMessageEdit' v-on:closemodal='onCloseEdit' :showeditmodal='showeditmodal' :task='currentTask' v-on:updatetaskevent='updateTask'></edit-task>
+            <tasks-list v-on:editclickevent='onEditClick' v-on:edittaskevent='selectTask' :showeditmodal='showeditmodal' :tasks='tasks' v-on:deleteclickevent='deleteTask'></tasks-list>
+            
+        </div>
+
+        <!-- footer -->
+        <footer-vue class="footer"></footer-vue>
+    </div>
+
+
+    <!--Import App-->
+    <script src="app.js"></script>
+
+    <!--Import Components-->
+    <script src="components/header.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="components/tasks_list.js"></script>
+    <script src="components/add_task_modal.js"></script>
+    <script src="components/edit_task_modal.js"></script>
+    
+
+    
+    <!--Mount App-->
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
+</body>
+
+
+
+</html>
