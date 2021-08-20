@@ -3,6 +3,7 @@ const app = Vue.createApp ({
         return {
             errormessage: false,
             successmessage: false,
+            showeditmodal:false,
             markedTasks: [],
             unMarkedTasks:[],
             currentTask: {}
@@ -11,8 +12,6 @@ const app = Vue.createApp ({
     mounted() {
         this.getAllUnmarkedTasks()
         this.getAllMarkedTasks()
-        console.log(this.markedTasks);
-        console.log(this.unMarkedTasks);
     },
     methods: {
         getAllUnmarkedTasks(){

@@ -59,6 +59,7 @@ app.component('add-task', {
         },
         onSubmit() {
             this.addtask()
+            this.newTask = {task_name: '', finish_date: ''}
             this.showAddModal = !this.showAddModal
           }
     },
