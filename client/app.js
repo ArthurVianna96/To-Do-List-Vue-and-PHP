@@ -3,11 +3,6 @@ const app = Vue.createApp ({
         return {
             errormessage: false,
             successmessage: false,
-            errorMessageCreate: false,
-            successMessageCreate: false,
-            errorMessageEdit: false,
-            successMessageEdit: false,
-            showeditmodal: false,
             tasks: [],
             currentTask: {}
         }
