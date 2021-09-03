@@ -150,3 +150,8 @@ i.fa-check:hover{
     transform: none;
     color: green;
 }
+
+.dark-theme{
+    color: #fff;
+    
+}
