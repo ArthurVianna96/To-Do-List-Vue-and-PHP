@@ -24,12 +24,12 @@
 
     <div id="app">
         <!-- header -->
-        <header-vue class="header"></header-vue>
+        <header-vue class="header" v-on:toggle-dark-mode ='toggleDarkMode'></header-vue>
 
         <!-- content -->
-        <div class="content">
+        <div class="content" :class="{'dark-app': darkMode}">
 
-            <add-task :errormessage='errormessage' :successmessage='successmessage' v-on:addtaskevent='addTask'></add-task>
+            <add-task :darkmode = 'darkMode' v-on:addtaskevent='addTask'></add-task>
 
             <div class='container'>
                 <div class='alert alert-danger row message' style="padding: 0px;" v-if='errormessage'>
@@ -47,15 +47,15 @@
                 </div> 
             </div>
 
-            <edit-task :errormessage='errormessage' :successmessage='successmessage' v-on:closemodal='onCloseEdit' :showeditmodal='showeditmodal' :task='currentTask' v-on:updatetaskevent='updateTask'></edit-task>
+            <edit-task v-on:closemodal='onCloseEdit' :showeditmodal='showeditmodal' :task='currentTask' v-on:updatetaskevent='updateTask'></edit-task>
             
-            <tasks-list v-on:editclickevent='onEditClick' v-on:edittaskevent='selectTask' :showeditmodal='showeditmodal' :tasks='unMarkedTasks' v-on:deleteclickevent='deleteTask' v-on:marktask='markTask'></tasks-list>
+            <tasks-list v-on:editclickevent='onEditClick' v-on:edittaskevent='selectTask' :showeditmodal='showeditmodal' :tasks='unMarkedTasks' :darkmode='darkMode' v-on:deleteclickevent='deleteTask' v-on:marktask='markTask'></tasks-list>
             
-            <finished-tasks-container :finishedtasks='markedTasks' v-on:unmark='unMarkTask'></finished-tasks-container>
+            <finished-tasks-container :finishedtasks='markedTasks' :darkmode='darkMode' v-on:unmark='unMarkTask'></finished-tasks-container>
         </div>
 
         <!-- footer -->
-        <footer-vue class="footer"></footer-vue>
+        <footer-vue class="footer" :darkmode='darkMode'></footer-vue>
     </div>
 
 

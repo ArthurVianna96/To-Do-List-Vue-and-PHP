@@ -1,9 +1,14 @@
 app.component('add-task', {
+    props: {
+        darkmode:{
 
+        }
+    },
     data(){
         return{
             showAddModal: false,
             newTask: {task_name: '', finish_date: ''}
+            
         }
     },
 
@@ -13,15 +18,15 @@ app.component('add-task', {
     <div class='container'>
         <div class="row mt-3">
             <div class="col-lg-6">
-                <h3 style='margin:0px;' class='text-info'>Tarefas Ativas</h3>
+                <h3 style='margin:0px;' class='text-info' :class="{'text-warning': darkmode}">Tarefas Ativas</h3>
             </div>
             <div class="col-lg-6">
-                <button type='button' class="btn btn-info float-right" @click='showAddModal = !showAddModal'>
+                <button type='button' class="btn btn-info float-right" :class="{'btn-warning': darkmode}" @click='showAddModal = !showAddModal'>
                     <i class='fas fa-plus' style='font-size: 1.0rem;'></i> &nbsp;&nbsp;Adicionar Tarefa
                 </button>
             </div>
         </div>
-        <hr class='bg-info'>
+        <hr class='bg-info' :class="{'bg-warning': darkmode}">
     </div>
     
     <div id='overlay' v-if='showAddModal'>

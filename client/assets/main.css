@@ -49,13 +49,16 @@ body{
 
 
 .header{
-    font-size: 1.5rem;
     grid-area: header;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     color: #fff;
+    padding: 0 20px;
     background-color: mediumslateblue;
+}
+.header > h1{
+    font-size: 1.5rem;
 }
 
 .footer{
@@ -151,7 +154,13 @@ i.fa-check:hover{
     color: green;
 }
 
-.dark-theme{
-    color: #fff;
+.dark-app{
+    background-color: rgb(45, 45, 45);
+}
 
+.dark-header-footer{
+    background-color: darkgoldenrod;
+}
+.dark-theme-color{
+    color: #fff
 }

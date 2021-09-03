@@ -1,7 +1,10 @@
 app.component('footer-vue', {
+    props:{
+        darkmode:{}
+    },
     template:
     /*html*/
-    `<footer>
+    `<footer :class="{'dark-header-footer':darkmode}">
         Arthur Pedrosa Vianna {{ year }}
     </footer>`,
     computed: {

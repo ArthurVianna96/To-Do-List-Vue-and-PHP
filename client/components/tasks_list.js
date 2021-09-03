@@ -4,6 +4,9 @@ app.component('tasks-list', {
         },
         tasks:{
             type: Array
+        },
+        darkmode:{
+
         }
     },
     data(){
@@ -18,7 +21,7 @@ app.component('tasks-list', {
     `
     <div class='container'>
         <table class='table table-hover table-striped'>
-            <thead class='text-center'>
+            <thead class='text-center' :class="{'dark-theme-color': darkmode}">
                 <th></th>
                 <th>ID</th>
                 <th>Tarefa</th>

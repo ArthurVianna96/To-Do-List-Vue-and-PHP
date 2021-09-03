@@ -6,7 +6,8 @@ const app = Vue.createApp ({
             showeditmodal:false,
             markedTasks: [],
             unMarkedTasks:[],
-            currentTask: {}
+            currentTask: {},
+            darkMode:false
         }
     },
     mounted() {
@@ -119,6 +120,10 @@ const app = Vue.createApp ({
         },
         selectTask(value){
             this.currentTask = value
+        },
+        toggleDarkMode(value){
+            this.darkMode = value
+            console.log(this.darkMode);
         }
     },
 

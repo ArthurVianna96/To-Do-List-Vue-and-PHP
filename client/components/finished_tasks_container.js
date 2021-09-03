@@ -2,6 +2,9 @@ app.component('finished-tasks-container', {
     props:{
         finishedtasks:{
             type: Array,   
+        },
+        darkmode:{
+
         }
     },
     data(){
@@ -15,10 +18,10 @@ app.component('finished-tasks-container', {
     <div class='container'>
         <div class="row mt-3">
             <div class="col-lg-6">
-                <h3 style='margin:0px;' class='text-info'>Tarefas Completas</h3>
+                <h3 style='margin:0px;' class='text-info' :class="{'text-warning': darkmode}">Tarefas Completas</h3>
             </div>
         </div>
-        <hr class='bg-info'>
+        <hr class='bg-info' :class="{'bg-warning': darkmode}">
     </div>
 
     <div v-for='(task, index) in finishedtasks' :key='task.id' class='finished-task container row mt-2'>
